@@ -3,22 +3,23 @@ const fs = require('fs');
 function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
+    
+    const result = [];
 
     data.split('\n').forEach((data) => {
-        result.push(data.split(','));
+      result.push(data.split(','));
     });
 
-    const result = [];
     result.shift();
-    
+
     const list = [];
+    const fields = new Set();
     result.forEach((data) => list.push([data[0], data[3]]));
     list.forEach((item) => fields.add(item[1]));
-    
-    const fields = new Set();
 
-    fields.forEach((data) => { (final[data] = 0); });
+
     const final = {};
+    fields.forEach((data) => { (final[data] = 0); });
 
     list.forEach((data) => { (final[data[1]] += 1); });
 
